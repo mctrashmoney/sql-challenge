@@ -1,6 +1,6 @@
 # EmployeeSQL
 
-## About:
+## About
 
 This has been separated into three directories:
 - CSV/ #Contains the CSV files
@@ -36,7 +36,7 @@ INNER JOIN employees e ON dm.emp_no = e.emp_no;
 
 4. List the department number for each employee along with that employee’s employee number, last name, first name, and department name.
 ```pgsql
-SELECT e.emp_no, e.last_name, e.first_name, d.dept_name
+SELECT de.dept_no, e.emp_no, e.last_name, e.first_name, d.dept_name
 FROM employees e
 INNER JOIN dept_emp de ON e.emp_no = de.emp_no
 INNER JOIN departments d ON de.dept_no = d.dept_no;
@@ -75,3 +75,7 @@ FROM employees
 GROUP BY last_name
 ORDER BY frequency DESC;
 ```
+
+### Issues and lessons learned
+* In the creating of the tables, I tried automating the importing the CSVs as well, which led to some errors in the directory which I had to consult with ChatGPT, hence the commentary in the middle of the [SQL file](https://github.com/mctrashmoney/sql-challenge/blob/main/EmployeeSQL/data/SQL/create_import_tables.sql)
+* In the fourth query I specifically forgot to list the department number, so I had to add it last minute.
